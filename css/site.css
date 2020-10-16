@@ -2,6 +2,32 @@ span{
     color: red;
 }
 
+button{
+    padding: .75em;
+    border-radius: .25em;
+    background-color: rgb(1, 139, 1);
+    color: rgb(92, 0, 197);
+    border: 1.25px solid black;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(0, 146, 24);
+}
+
+body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+h1{
+    text-align: center;
+}
+
+h1, form label, form button, form input{
+    font-family: 'Hind', sans-serif;
+}
+
 input[type=text]{
     margin-bottom: 1em;
 }
