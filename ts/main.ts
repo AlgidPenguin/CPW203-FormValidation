@@ -4,15 +4,43 @@ window.onload = function() {
     regBtn.onclick = main;
 }
 
+/**
+ * Change the heading to a random color when clicked
+ */
+function changeHeading() {
+    let heading = <HTMLElement>this;
+    let red = Math.floor(Math.random() * 255 + 1);
+    let blue = Math.floor(Math.random() * 255 + 1);
+    let green = Math.floor(Math.random() * 255 + 1);
+
+    heading.style.color = "rgb(" + red + "," + green + "," + blue + ")";
+}
+
 function main():void {
+    let msgHeading = document.createElement("h2");
+    msgHeading.innerText = "Processing form";
+    msgHeading.setAttribute("class", "message");
+    
+    let h1 = document.querySelector("h1");
+    h1.insertAdjacentElement("afterend", msgHeading);
+    msgHeading.onclick = changeHeading;
+
+
+    setTimeout(function(){
+        msgHeading.remove();
+    }, 4000)
+
     clearErrorSpans();
     isTextPresent("first-name", "First name is required");
     isTextPresent("last-name", "Last name is required");
     
+    checkValidDate();
+}
+
+function checkValidDate() {
     let dobBox = <HTMLInputElement>document.getElementById("dob");
     let dob = dobBox.value;
-
-    if(!isValidDate(dob)){
+    if (!isValidDate(dob)) {
         dobBox.nextElementSibling.innerHTML = "Format should be mm/dd/yyyy";
     }
 }
